@@ -1,12 +1,12 @@
-class TheStockGuy {
+class TheFleet {
   static fleetPositions = [];
 
   static addShipToFleet(ship) {
-    TheStockGuy.fleetPositions.push(ship);
+    TheFleet.fleetPositions.push(ship);
   }
 
   static thisShipIsAlreadyInTheFleet(ship) {
-    for (let loggedShip of TheStockGuy.fleetPositions) {
+    for (let loggedShip of TheFleet.fleetPositions) {
       for (let newShipIndex of ship.indexArray) {
         const pointToFind = newShipIndex;
         const loggedShipPoints = loggedShip.indexArray;
@@ -89,10 +89,10 @@ function validateBattlefield(field) {
           shipOrientation
         );
 
-        if (!TheStockGuy.thisNewShipIsValid(newBoat, field)) {
+        if (!TheFleet.thisNewShipIsValid(newBoat, field)) {
           return false;
-        } else if (!TheStockGuy.thisShipIsAlreadyInTheFleet(newBoat)) {
-          TheStockGuy.addShipToFleet(newBoat);
+        } else if (!TheFleet.thisShipIsAlreadyInTheFleet(newBoat)) {
+          TheFleet.addShipToFleet(newBoat);
         }
       } else {
         continue;
@@ -100,7 +100,7 @@ function validateBattlefield(field) {
     }
   }
 
-  return checkFleetNumbers(TheStockGuy.fleetPositions);
+  return checkFleetNumbers(TheFleet.fleetPositions);
 }
 
 function susOutMyDelta(row, col, array) {
