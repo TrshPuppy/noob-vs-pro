@@ -1,3 +1,4 @@
+// This class keeps track of the fleet of ships on the board
 class TheFleet {
   static fleetPositions = [];
 
@@ -34,6 +35,7 @@ class TheFleet {
   }
 }
 
+// This class is used to create boats as we find them so a boat knows where it starts, its length, its orientation, etc.
 class BoatyMcBoatFace {
   constructor(startingIndex, rHowLongsTheBeakMeBoi, orientation) {
     this.startingIndex = startingIndex;
@@ -72,6 +74,7 @@ class BoatyMcBoatFace {
   }
 }
 
+// Main function
 function validateBattlefield(field) {
   let sequenceLength = 0;
   let shipOrientation;
@@ -103,6 +106,7 @@ function validateBattlefield(field) {
   return checkFleetNumbers(TheFleet.fleetPositions);
 }
 
+// Get the boat's orientation: 
 function susOutMyDelta(row, col, array) {
   if (array[row][col + 1] === undefined || array[row][col + 1] === 0) {
     if (array[row + 1][col] === 1) {
@@ -115,6 +119,7 @@ function susOutMyDelta(row, col, array) {
   }
 }
 
+// With the boat's orientation, find its length:
 function getSequenceLength(delta, row, col, array) {
   let sequenceLength = 1;
   if (delta[0] === 0 && delta[1] === 0) {
@@ -140,7 +145,7 @@ function checkForOnesInShipRightBottom(ship, battleField) {
         return true;
       }
 
-      //Check bottom
+      // Check bottom
       if (battleField[endingIndex[0] + 1][endingIndex[1]] === 1) {
         return true;
       }
@@ -154,7 +159,7 @@ function checkForOnesInShipRightBottom(ship, battleField) {
         return true;
       }
     }
-    //Check right end of ship
+    // Check right end of ship
     if (battleField[endingIndex[0]][endingIndex[1] + 1] === 1) {
       return true;
     }
